@@ -112,11 +112,6 @@ const Edit = ({  title }) => {
   };
  
   
-  const handleType = (event) => {
-
-    setData({ ...data, accountType: event.target.value })
-    
-  }
 
   const handleEdit = async (e) => {
     e.preventDefault();
@@ -248,38 +243,6 @@ const Edit = ({  title }) => {
               
               ))}
 
-              
-          
-              <div className="GroupRadio">
-                <h5>Account Type</h5>
-                <div className="formRadio" > 
-                    <input
-                      id="CUSTOMER"
-                      type="radio"
-                      value="CUSTOMER"
-                      checked={data.accountType === 'CUSTOMER'}
-                      onChange={handleType}
-                      
-                    />
-                    <label htmlFor="consumer">customer</label>
-                </div>
-                <div className="formRadio" > 
-                    
-                    <input
-                      id="OWNER"
-                      type="radio"
-                      value="OWNER"
-                      checked={data.accountType === 'OWNER'}
-                      onChange={handleType}
-                      
-                    />
-                    <label htmlFor="OWNER">owner</label>
-
-                </div>
-              </div>
-
-              
-                
               <button className="btn" disabled={per !== null && per < 100} type="submit">
                 EDIT
               </button>

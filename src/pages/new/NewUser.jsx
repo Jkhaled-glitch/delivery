@@ -195,36 +195,6 @@ const New = ({ inputs, title }) => {
               ))}
 
               
-          
-              <div className="GroupRadio">
-                <h5>Account Type </h5>
-                <div className="formRadio" > 
-                    <input
-                      id="CUSTOMER"
-                      type="radio"
-                      value="CUSTOMER"
-                      checked={type === 'CUSTOMER'}
-                      onChange={handleType}
-                      
-                    />
-                    <label htmlFor="consumer">customer</label>
-                </div>
-                <div className="formRadio" > 
-                    
-                    <input
-                      id="OWNER"
-                      type="radio"
-                      value="OWNER"
-                      checked={type === 'OWNER'}
-                      onChange={handleType}
-                      
-                    />
-                    <label htmlFor="OWNER">owner</label>
-
-                </div>
-              </div>
-
-              
                 
               <button className="btn" disabled={per !== null && per < 100} type="submit">
                 ADD

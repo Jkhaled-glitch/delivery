@@ -26,12 +26,15 @@ const Sidebar = () => {
     <div className="sidebar">
       <div className="top">
         <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">Location </span>
+          <span className="logo">Admin Space </span>
         </Link>
       </div>
-      <hr />
+     
       <div className="center">
         <ul>
+          {
+            /*
+            
           <p className="title">MAIN</p>
           <Link to="/" style={{ textDecoration: "none" }}>
           <li >
@@ -40,21 +43,28 @@ const Sidebar = () => {
           </li>
           
           </Link>
+          */
+          }
+
+         
           <p className="title">LISTS</p>
           <Link to="/users" style={{ textDecoration: "none" }}>
-            <li>
+            <li >
               <PersonOutlineIcon className="icon" />
               <span>Users</span>
             </li>
           </Link>
+          {
+            /*
           <Link to="/products" style={{ textDecoration: "none" }}>
             <li>
               <StoreIcon className="icon" />
-              <span>Products</span>
+              <span>Projects</span>
             </li>
           </Link>
         
-          
+          */
+        }
           <p className="title">ADMIN</p>
           <Link to="/admins" style={{ textDecoration: "none" }}>
             <li>
@@ -70,25 +80,23 @@ const Sidebar = () => {
             <span>New</span>
           </li>
           </Link>
+           
 
+           {
+            /*
+            
           <Link to="/admins/notifications" style={{ textDecoration: "none" }}>
           <li>
             <NotificationsNoneIcon className="icon" />
             <span>Notifications</span>
           </li>
           </Link>
-          
-          <p className="title">SERVICE</p>
-         
-          <li>
-            <PsychologyOutlinedIcon className="icon" />
-            <span>Logs</span>
-          </li>
+          */
+        }
           
           
           <p className="title">AUTHENTIFICATIONS</p>
           
-         
            <li>
            <Logout />
            </li>

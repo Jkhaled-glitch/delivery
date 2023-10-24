@@ -1,18 +1,24 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { productColumns } from "../../datatablesource";
+import { tacheColumns } from "../../datatablesource";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   collection,
   getDocs,
+  getDoc,
   deleteDoc,
+  updateDoc,
   doc,
   
 } from "firebase/firestore";
-import { db } from "../../firebase";
+import { db,sendNotificationsToUser } from "../../firebase";
+
+
+
 
 const Datatable = () => {
+  
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -37,20 +43,18 @@ const Datatable = () => {
 
   const navigate = useNavigate()
  
+  const handleAuthorise =  async (email,city,productId) => {
+    
+  //authorization 
+  await updateDoc(doc(db, "HouseCollection", productId), {
+    authorized: true
+  });
 
-  const handleDelete = async (id) => {
-    try {
-      await deleteDoc(doc(db, "HouseCollection", id));
-      setData(data.filter((item) => item.id !== id));
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const handleView =  (id) => {
-    navigate(`/products/${id}`)
-  };
-  const handleEdit =  (id) => {
-    navigate(`/products/edit/${id}`)
+
+  const message = "Your house from '"+city+"' is now authorized and ready for rent"
+  sendNotificationsToUser(email, "House Authorization",message)
+    
+    navigate(`/products`)
   };
 
   const actionColumn = [
@@ -63,17 +67,13 @@ const Datatable = () => {
           <div className="cellAction">
             
               <div className="viewButton"
-              onClick={() => handleView(params.row.id)} >View</div>
-
-<div className="viewButton"
-              onClick={() => handleEdit(params.row.id)} >Edit</div>
-            
-            <div
-              className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
-            >
-              Delete
-            </div>
+                    onClick={() => handleAuthorise(params.row.ownerEmail,params.row.city, params.row.id)} >
+                    Done
+              </div>
+              <div className="viewButton"
+                    onClick={() => handleAuthorise(params.row.ownerEmail,params.row.city, params.row.id)} >
+                    Modify
+              </div>
           </div>
         );
       },
@@ -83,13 +83,13 @@ const Datatable = () => {
     <div className="datatable">
       <div className="datatableTitle">
         Notifications
-        
+      
       </div>
 
       <DataGrid
         className="datagrid"
         rows={data}
-        columns={productColumns.concat(actionColumn)}
+        columns={tacheColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
         checkboxSelection

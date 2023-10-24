@@ -1,4 +1,9 @@
 import "./single.scss"
+import React from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 
@@ -175,13 +180,17 @@ const Edit = ({  title }) => {
           <div className="right">
           <div className="images">
               {data.images && (
-                <div className="imageRow">
-                  {data.images.map((url,index) => (
-                    <div key={index} className="imageCell">
-                      <img src={url} alt="image" />
-                    </div>
-                  ))}
-                </div>
+
+<div className="">
+<Slider>
+  {data.images.map((url, index) => (
+    <div key={index} className="imageCell">
+      <img src={url} alt="image" />
+    </div>
+  ))}
+</Slider>
+</div>
+
               )}
           </div>
 

@@ -1,7 +1,7 @@
 
-$bg: rgb(167, 119, 28);
-$bg-hover: rgb(204, 159, 75);
-$color:#111;
+$bg: whiteSmoke;
+$bg-hover: #f36516;
+$color:black;
 $border-color:#333;
 
 
@@ -19,6 +19,15 @@ $border-color-dark:#333;
 
   background-color: $bg-dark;
   color: $color-dark;
+
+  .navbar {
+   
+    background-color: $bg-dark;
+    
+    .icon {
+      color: $color-dark;
+    }
+  }
 
   .chartGrid {
     stroke: $color-dark;
@@ -47,8 +56,12 @@ $border-color-dark:#333;
     background-color: $bg-dark;
     
     .top {
+      background-color: $bg-dark;
+      border-bottom: 1px solid  $border-color-dark;
+     
       .logo {
         color: $color-dark;
+        
       }
     }
    
@@ -149,6 +162,17 @@ $border-color-dark:#333;
         }
      
   }
+  .css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar {
+    color: $color-dark;
+}
+
+.css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar .MuiTablePagination-actions {
+ 
+  button{
+    color: $color-dark;
+  }
+}
+
 }
 
 
@@ -168,8 +192,13 @@ $border-color-dark:#333;
 
   .navbar {
     color: $color;
+    background-color: #f36516;
     .search {
       border-color: $color;
+    }
+    .icon {
+    
+      color: $bg;
     }
   }
 
@@ -178,8 +207,11 @@ $border-color-dark:#333;
     color: $color;
  
     .top {
+      background-color: #f36516;
+      
       .logo {
-        color: $color;
+        color: $bg;
+        
       }
     }
     ul {
@@ -206,6 +238,19 @@ $border-color-dark:#333;
         }
       }
     }
+
+    .items {
+     
+
+   
+       
+
+        .icon {
+          color: $bg;
+          font-size: 20px;
+        }
+      
+    }
   }
 
   .datatable {
@@ -220,8 +265,9 @@ $border-color-dark:#333;
   }
 
     input{
-      background-color:$color ;
-      color: $bg;
+      background-color:$bg ;
+     
+      color: $color;
       border-color: $border-color;
   }
 
@@ -250,18 +296,34 @@ $border-color-dark:#333;
     }
   }
   .delete{
-    box-shadow: 0 2px 4px $bg;
-    background-color: $color;
+    box-shadow: 0 2px 4px $color;
+    
+    background-color: $bg;
    
     &:before  {
-     background-color: $bg;
+     background-color: $color;
      }
 
      &:after {
-       background-color: $bg;
+       background-color: $color;
        }
     
  }
+ .right{
+  
+  .slick-prev,.slick-next {
+   
+    &:before{
+     color:rgb(124, 122, 122);
+    }
+   
+}
+
+ }
+
+
+
+ 
   
 }
 

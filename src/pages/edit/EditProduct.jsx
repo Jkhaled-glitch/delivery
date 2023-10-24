@@ -6,21 +6,16 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
 import {
-  addDoc,
-  collection,
   doc,
   getDoc,
   updateDoc,
   serverTimestamp,
-  setDoc,
 } from "firebase/firestore";
-import { auth, db, storage } from "../../firebase";
+
+import { sendNotificationsToUser, db, storage } from "../../firebase";
 
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
-import { Upload } from "@mui/icons-material";
-import { Button } from "@mui/material";
-
 
 const Edit = ({  title }) => {
  
@@ -124,6 +119,7 @@ const Edit = ({  title }) => {
   }
 
 
+
   const handleEdit = async (e) => {
     e.preventDefault();
   
@@ -131,14 +127,9 @@ const Edit = ({  title }) => {
     setPer(50);
   
     try {
-     
-      
-      
         const promises = files.map((file) => uploadFiles(file));
         if(files.length>0 )
           setStatus("Uploading images ...");
-
-
         const urls = await Promise.all(promises);
 
         const images = urls.reduce((obj, url) => {
@@ -146,18 +137,38 @@ const Edit = ({  title }) => {
           return obj;
         }, {});
 
-const imagesUrls = Object.keys(images).map(url => url);
+        const imagesUrls = Object.keys(images).map(url => url);
 
-console.log(data)
+      //Edit 
+        await updateDoc(doc(db, "HouseCollection", productId), {
+          ...data,
+          lastModifiedDate:serverTimestamp(),
+          images: [...data.images,...imagesUrls],
+         
+        });
+        const serverTimeStamp = new Date();
 
-await updateDoc(doc(db, "HouseCollection", productId), {
-  ...data,
-  images: [...data.images,...imagesUrls]
-});
+        const dateFormatted = serverTimeStamp.toLocaleString('en-US', {
+                                                              weekday: 'short',
+                                                              day: 'numeric',
+                                                              month: 'numeric',
+                                                              year: 'numeric',
+                                                              hour: 'numeric',
+                                                              minute: 'numeric',
+                                                            }
+  );
+
+       // Send notifications to user tokens
+        
+      
+        const message = "Your house from '"+data.city+"' is updated now, "+dateFormatted;
+        console.log("owner: "+data.ownerEmail)
+        sendNotificationsToUser(data.ownerEmail,"Updating House from admin",message)
+
   
-      setStatus("House Editing Successfully");
-  
-      setTimeout(() => navigate(`/products/${productId}`), 3000);
+        setStatus("House Editing Successfully");
+    
+        //setTimeout(() => navigate(`/products/${productId}`), 3000);
     } catch (err) {
       console.log(err);
       setStatus(err.message);

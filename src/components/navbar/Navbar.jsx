@@ -77,14 +77,12 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="wrapper">
-        <div className="search">
-          <input type="text" placeholder="Search..." />
-          <SearchOutlinedIcon />
+        <div >
+         
         </div>
         <div className="items">
           <div className="item">
-            <LanguageOutlinedIcon className="icon" />
-           English
+            
           </div>
           <div className="item">
             <DarkModeOutlinedIcon
@@ -93,21 +91,31 @@ const Navbar = () => {
             />
           </div>
           <div className="item">
-            <FullscreenExitOutlinedIcon className="icon" />
-          </div>
-          <div className="item">
-            <NotificationsNoneOutlinedIcon className="icon" />
             
-            <div className="counter" 
-                  onClick={()=>navigate("/admins/notifications")}>     {notifications}
+          </div>
+          {
+            /*
+          <div className="item">
+          <NotificationsNoneOutlinedIcon className="icon" />
+            {
+            
+              notifications > 0 ? (
+              <div className="counter" 
+                  onClick={()=>navigate("/admins/notifications")}>{notifications}
             </div>
+              ):null
+
+            }
+            
           </div>
           <div className="item">
-            <ChatBubbleOutlineOutlinedIcon className="icon" />
-            <div className="counter">x</div>
+            
           </div>
+
+          */
+          }
           <div className="item">
-            <ListOutlinedIcon className="icon" />
+         
           </div>
           <div className="item">
             <img

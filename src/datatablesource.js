@@ -28,17 +28,8 @@ export const userColumns = [
     field: "address",
     headerName: "Address",
     width: 100,
-  },
-  {
-    field: "accountType",
-    headerName: "Type",
-    width: 100,
   }
 ];
-
-
-
-
 
 
 export const productColumns = [
@@ -51,6 +42,30 @@ export const productColumns = [
   { field: "phone", headerName: "Phone", width: 120 },
   { field: "price", headerName: "Price", width: 100 },
   { field: "size",headerName: "Size",width: 80,},
+  {
+    field: "Images",
+    headerName: "Image",
+    width: 100,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImgProduct">
+          <img className="cellImgProduct" src={params.row.images[0]} alt="avatar" />
+          
+        </div>
+      );
+    }
+  },
+];
+
+export const tacheColumns = [
+  
+  { field: "taskTitle",headerName: "Task Title",width: 110,},
+  { field: "userName",headerName: "UserName",width: 120,},
+
+  { field: "userEmail",headerName: "UserEmail",width: 130,},
+
+
+ 
   {
     field: "Images",
     headerName: "Image",

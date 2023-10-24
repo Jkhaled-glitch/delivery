@@ -3,25 +3,25 @@ export const userInputs = [
       id: "name",
       label: "name",
       type: "text",
-      placeholder: "Khaled",
+      placeholder: "tape your name",
     },
     {
       id: "lastName",
       label: "lastName",
       type: "text",
-      placeholder: "Jouablia",
+      placeholder: "tape your last name",
     },
     {
       id: "phone",
       label: "Phone Number",
       type: "number",
-      placeholder: "53 076 588",
+      placeholder: "tape your phone",
     },
     {
       id: "email",
       label: "Email",
       type: "mail",
-      placeholder: "Jb_Khaled@gmail.com",
+      placeholder: "tape your email",
     },
     {
       id: "password",
@@ -32,7 +32,7 @@ export const userInputs = [
       id: "address",
       label: "Address",
       type: "text",
-      placeholder: "Elton St. 216 NewYork",
+      placeholder: "tape your adresse",
     },
   ];
   

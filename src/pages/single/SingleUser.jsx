@@ -7,12 +7,8 @@ import Chart from "../../components/chart/Chart";
 import List from "../../components/table/Table";
 
 import {
-    collection,
-    getDocs,
-    deleteDoc,
     doc,
     getDoc,
-    onSnapshot,
   } from "firebase/firestore";
   import { db } from "../../firebase";
 
@@ -95,20 +91,13 @@ const Single = () => {
                   </span>
                 </div>
                 <div className="detailItem">
-                  <span className="itemKey">AccountType:</span>
-                  <span className="itemValue">{data.accountType}</span>
-                </div>
-                <div className="detailItem">
                   <span className="itemKey">Password:</span>
                   <span className="itemValue">{data.password}</span>
                 </div>
               </div>
             </div>
           </div>
-          <div className="right">
-            <Chart aspect={3 / 1} title="User Spending ( Last 6 Months)" />
-            
-          </div>
+          
         </div>
         
       </div>
