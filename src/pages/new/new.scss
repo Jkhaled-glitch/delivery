@@ -28,23 +28,23 @@
           opacity: 50%;
 
         }
-        .grid{
-         display: grid;
-         grid-template-columns: repeat(2,1fr);
-         gap:15px;
-        
 
-      
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 15px;
+        }
+
       }
-        
-      }
       
+      
+
 
       .right {
         flex: 2;
 
         form {
-          
+
           display: flex;
           flex-wrap: wrap;
           gap: 30px;
@@ -69,11 +69,11 @@
               border: none;
               border-bottom: 1px solid gray;
             }
-           
-            
+
+
           }
 
-          .GroupRadio{
+          .GroupRadio {
             margin-top: 8px;
             width: 40%;
             -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
@@ -82,38 +82,39 @@
             padding: 5px 0 0 10px;
 
             .formRadio {
-              
+
               margin-bottom: 5px;
+
               input[type="radio"] {
                 width: 20%;
                 padding: 5px;
                 border: none;
                 border-bottom: 1px solid gray;
-            
+
                 &:checked {
                   background-color: red;
                 }
-                
+
                 &:not(:checked) {
                   background-color: black;
                   border-color: gray;
                 }
-                
+
                 &:hover {
                   background-color: red;
                 }
               }
-              
 
-              
-              
-              
-              
-             
+
+
+
+
+
+
             }
           }
 
-          
+
 
           button {
             width: 150px;
@@ -123,15 +124,53 @@
             cursor: pointer;
             margin-top: 10px;
 
-            &:disabled{
+            &:disabled {
               cursor: not-allowed;
             }
           }
         }
       }
     }
-    .status{
-      
+
+    .tasks{
+      .task{
+        display: flex;
+        gap: 5px;
+        margin: 0 5px 5px;
+        
+        align-items: center;
+
+        .task-element{
+          display: flex;
+          flex-direction: column;
+          background-color: gray;
+          height: 60px;
+         
+          .label{
+             
+            text-align: start;
+          }
+          input,textarea{
+            border:.5px solid ;
+            border-radius: 4px ;
+            height: 30px;
+            width: 90%;
+            margin: 0 auto;
+            padding-left:10px;
+            font-size: 20px;
+          }
+         
+        }
+        button{
+          justify-content: end;
+          height: 50px;
+         
+        }
+      }
+    }
+
+    .status {
+
       display: flex;
       justify-content: center;
       color: red;

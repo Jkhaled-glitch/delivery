@@ -99,4 +99,58 @@ export const userInputs = [
       placeholder: "8160",
     },
   ];
+  export const programInputs = [
+    {
+      id: "debut",
+      label: "Start Date",
+      type: "date",
+      placeholder: "Start Date",
+    },
+    {
+      id: "fin",
+      label: "End Date",
+      type: "date",
+      placeholder: "End Date",
+    },
+    
+    {
+      id: "description",
+      label: "Description",
+      type: "text",
+      placeholder: "Description",
+    }
+  ];
+
+  export const taskInputs = [
+    {
+      id: "name",
+      label: "Name",
+      type: "text",
+      placeholder: "Name",
+    },
+    {
+      id: "heureDebutReelle",
+      label: "Real Start Hour",
+      type: "datetime-local",
+      placeholder: "Real Start Hour",
+    },
+    {
+      id: "heureFinReelle",
+      label: "Real End Hour",
+      type: "datetime-local",
+      placeholder: "Real End Hour",
+    },
+    {
+      id: "duree",
+      label: "Duration",
+      type: "number",
+      placeholder: "Duration",
+    },
+    {
+      id: "commentaire",
+      label: "Comment",
+      type: "text",
+      placeholder: "Comment",
+    }
+  ];
   

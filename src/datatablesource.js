@@ -57,6 +57,26 @@ export const productColumns = [
   },
 ];
 
+export const programsColumns = [
+  
+  { field: "id",headerName: "ID",width: 70,},
+  { field: "debut",headerName: "START DATE",width: 130,},
+  { field: "fin", headerName: "END DATE", width: 130 },
+  { field: "status", headerName: "STATUS", width: 100 },
+  { field: "description",headerName: "DESCRIPTION",width: 230,},
+ 
+];
+
+export const tasksColumns = [
+  
+  { field: "id",headerName: "ID",width: 70,},
+  { field: "name", headerName: "NAME", width: 100 },
+  { field: "heureDebutReelle",headerName: "START HOUR",width: 130,},
+  { field: "heureFinReelle", headerName: "END HOUR", width: 130 },
+  { field: "commentaire",headerName: "COMMENT",width: 230,},
+ 
+];
+
 export const tacheColumns = [
   
   { field: "taskTitle",headerName: "Task Title",width: 110,},

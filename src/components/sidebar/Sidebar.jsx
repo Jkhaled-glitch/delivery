@@ -21,7 +21,7 @@ import Logout from "../../pages/logout/logout.jsx"
 const Sidebar = () => {
 
   const { dispatch } = useContext(DarkModeContext);
-  
+
   return (
     <div className="sidebar">
       <div className="top">
@@ -29,12 +29,11 @@ const Sidebar = () => {
           <span className="logo">Admin Space </span>
         </Link>
       </div>
-     
+
       <div className="center">
         <ul>
           {
-            /*
-            
+            /* 
           <p className="title">MAIN</p>
           <Link to="/" style={{ textDecoration: "none" }}>
           <li >
@@ -46,8 +45,9 @@ const Sidebar = () => {
           */
           }
 
-         
+
           <p className="title">LISTS</p>
+
           <Link to="/users" style={{ textDecoration: "none" }}>
             <li >
               <PersonOutlineIcon className="icon" />
@@ -56,15 +56,22 @@ const Sidebar = () => {
           </Link>
           {
             /*
-          <Link to="/products" style={{ textDecoration: "none" }}>
+            <Link to="/products" style={{ textDecoration: "none" }}>
+              <li>
+                <StoreIcon className="icon" />
+                <span>Projects</span>
+              </li>
+            </Link>
+            */
+          }
+          <Link to="/programs" style={{ textDecoration: "none" }}>
             <li>
               <StoreIcon className="icon" />
-              <span>Projects</span>
+              <span>Programs</span>
             </li>
           </Link>
-        
-          */
-        }
+
+
           <p className="title">ADMIN</p>
           <Link to="/admins" style={{ textDecoration: "none" }}>
             <li>
@@ -73,16 +80,17 @@ const Sidebar = () => {
             </li>
           </Link>
 
-         
-          <Link to="/admins/new" style={{ textDecoration: "none" }}>
-          <li>
-            <PersonOutlineIcon className="icon" />
-            <span>New</span>
-          </li>
-          </Link>
-           
 
-           {
+          <Link to="/admins/new" style={{ textDecoration: "none" }}>
+            <li>
+              <PersonOutlineIcon className="icon" />
+              <span>New</span>
+            </li>
+          </Link>
+
+
+
+          {
             /*
             
           <Link to="/admins/notifications" style={{ textDecoration: "none" }}>
@@ -92,15 +100,15 @@ const Sidebar = () => {
           </li>
           </Link>
           */
-        }
-          
-          
+          }
+
+
           <p className="title">AUTHENTIFICATIONS</p>
-          
-           <li>
-           <Logout />
-           </li>
-         
+
+          <li>
+            <Logout />
+          </li>
+
         </ul>
       </div>
       <div className="bottom">

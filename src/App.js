@@ -4,34 +4,43 @@ import Login from "./pages/login/Login";
 
 import UsersList from "./pages/list/usersList";
 import ProducstList from "./pages/list/productsList";
+import ProgramstList from "./pages/list/programsList";
 import AdminsList from "./pages/list/AdminsList";
 import NotificationsList from "./pages/list/NotificationsList";
 
 import SingleUser from "./pages/single/SingleUser"
 import SingleProduct from "./pages/single/SingleProduct"
+import SingleProgram from "./pages/single/SingleProgram"
+import SingleTask from "./pages/single/SingleTask"
+
 
 import EditUser from "./pages/edit/EditUser"
 import EditProduct from "./pages/edit/EditProduct"
+import EditProgram from "./pages/edit/EditProgram"
+import EditTask from "./pages/edit/EditTask"
+
 
 import NewUser from "./pages/new/NewUser";
 import NewProduct from "./pages/new/NewProduct";
 import NewAdmin from "./pages/new/NewAdmin";
+import NewProgram from "./pages/new/NewProgram";
+import NewTask from "./pages/new/NewTask.jsx";
+
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { productInputs, userInputs } from "./formSource";
+import { productInputs, programInputs, userInputs, taskInputs } from "./formSource";
 
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
 
-import { UseAutocompleteParametersn } from "@mui/material";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
 
-  const {currentUser} = useContext(AuthContext)
+  const { currentUser } = useContext(AuthContext)
 
-  
+
 
   const RequireAuth = ({ children }) => {
     return currentUser ? children : <Navigate to="/login" />;
@@ -40,7 +49,7 @@ function App() {
   return (
     <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
-      
+
         <Routes>
           <Route path="/">
             <Route path="login" element={<Login />} />
@@ -53,8 +62,8 @@ function App() {
                 </RequireAuth>
               }
             />
-            
-            <Route path="users"> 
+
+            <Route path="users">
               <Route
                 index
                 element={
@@ -64,41 +73,41 @@ function App() {
                 }
               />
               <Route
-                  path=":userId"
-                  element={
-                    <RequireAuth>
-                      <SingleUser />
-                    </RequireAuth>
-                  }
-                />
-                
-                <Route path="edit">
-                  <Route
+                path=":userId"
+                element={
+                  <RequireAuth>
+                    <SingleUser />
+                  </RequireAuth>
+                }
+              />
+
+              <Route path="edit">
+                <Route
                   index
-                   element={
+                  element={
                     <RequireAuth>
                       < h1>Verify your path</h1>
                     </RequireAuth>
                   }
-                  />
+                />
 
-                   <Route
-                      path=":userId"
-                      element={
-                        <RequireAuth>
-                          <EditUser  title="Edit User" />
-                        </RequireAuth>
+                <Route
+                  path=":userId"
+                  element={
+                    <RequireAuth>
+                      <EditUser title="Edit User" />
+                    </RequireAuth>
                   }
-                  />
-                </Route>
-              
-              
+                />
+              </Route>
+
+
 
               <Route
                 path="new"
                 element={
                   <RequireAuth>
-                    <NewUser inputs={userInputs} title="Add New User"  />
+                    <NewUser inputs={userInputs} title="Add New User" />
                   </RequireAuth>
                 }
               />
@@ -127,30 +136,136 @@ function App() {
                 path="new"
                 element={
                   <RequireAuth>
-                    <NewProduct inputs={productInputs}  title="Add New Product" />
+                    <NewProduct inputs={productInputs} title="Add New Product" />
                   </RequireAuth>
                 }
               />
               <Route path="edit">
-                  <Route
+                <Route
                   index
-                   element={
+                  element={
                     <RequireAuth>
                       < h1>Verify your path</h1>
                     </RequireAuth>
                   }
+                />
+
+                <Route
+                  path=":productId"
+                  element={
+                    <RequireAuth>
+                      <EditProduct title="Edit Product" />
+                    </RequireAuth>
+                  }
+                />
+              </Route>
+            </Route>
+
+            <Route path="programs">
+              <Route
+                index
+                element={
+                  <RequireAuth>
+                    <ProgramstList />
+                  </RequireAuth>
+                }
+              />
+              <Route path=":programId">
+                <Route
+                  index
+                  element={
+                    <RequireAuth>
+                      <SingleProgram />
+                    </RequireAuth>
+                  }
+                />
+                <Route path="tasks">
+                  <Route
+                    index
+                    element={
+                      <RequireAuth>
+                        <SingleProgram />
+                      </RequireAuth>
+                    }
                   />
 
-                   <Route
-                      path=":productId"
+                  <Route
+                    path=":taskId"
+                    element={
+                      <RequireAuth>
+                        <SingleTask />
+                      </RequireAuth>
+                    }
+                  />
+
+
+                  <Route
+                    path="new"
+                    element={
+                      <RequireAuth>
+                        <NewTask inputs={taskInputs} title="Add New Task" />
+                      </RequireAuth>
+                    }
+                  />
+                  <Route path="edit">
+                    <Route
+                      index
                       element={
                         <RequireAuth>
-                          <EditProduct title="Edit Product" />
+                          < h1>Verify your path</h1>
                         </RequireAuth>
-                  }
-                  />
+                      }
+                    />
+
+                    <Route
+                      path=":taskId"
+                      element={
+                        <RequireAuth>
+                          <EditTask title="Edit Task" />
+                        </RequireAuth>
+                      }
+                    />
+                  </Route>
                 </Route>
+
+
+
+
+
+
+              </Route>
+
+
+              <Route
+                path="new"
+                element={
+                  <RequireAuth>
+                    <NewProgram inputs={programInputs} title="Add New Program" />
+                  </RequireAuth>
+                }
+              />
+              <Route path="edit">
+                <Route
+                  index
+                  element={
+                    <RequireAuth>
+                      < h1>Verify your path</h1>
+                    </RequireAuth>
+                  }
+                />
+
+                <Route
+                  path=":programId"
+                  element={
+                    <RequireAuth>
+                      <EditProgram title="Edit Program" />
+                    </RequireAuth>
+                  }
+                />
+              </Route>
             </Route>
+
+
 
             <Route path="admins">
               <Route
@@ -165,7 +280,7 @@ function App() {
                 path="new"
                 element={
                   <RequireAuth>
-                    <NewAdmin   title="Add New Admin" />
+                    <NewAdmin title="Add New Admin" />
                   </RequireAuth>
                 }
               />
@@ -173,13 +288,13 @@ function App() {
                 path="notifications"
                 element={
                   <RequireAuth>
-                    <NotificationsList  title="Notifications" />
+                    <NotificationsList title="Notifications" />
                   </RequireAuth>
                 }
               />
 
-                   
-               
+
+
             </Route>
 
           </Route>
