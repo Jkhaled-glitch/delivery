@@ -82,7 +82,7 @@ function Copyright(props) {
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}
-          style={{background:'#f36516'}}>
+          style={{background:'#1F5BF3'}}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -121,7 +121,7 @@ function Copyright(props) {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              style={{background:'#f36516'}}
+              style={{background:'#1F5BF3'}}
             >
               Sign In
             </Button>
